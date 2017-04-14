@@ -12,10 +12,14 @@ public class PlayerInput : MonoBehaviour {
 
     private void Update ()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-        transInput = new Vector2 (h, v).normalized;
+        transInput = new Vector2(h, v).normalized;
+
+        // Set the target time factor based on an interpolated value using the min/max timescale with the magnitude of the player input
+        
+        TimeManager.TargetTimeFactor = (transInput.magnitude > 0.5f) ? 0.05f : 1f;
     }
 
     private void FixedUpdate ()
