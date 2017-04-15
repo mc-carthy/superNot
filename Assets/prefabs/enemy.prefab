@@ -333,6 +333,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHead: {fileID: 1402430316546528}
   enemyBody: {fileID: 1628463011435918}
+  weapon: {fileID: 4492720402030162}
+  enemyCorpse: {fileID: 1040240167914774, guid: 884a27846e6e24936ade5182a1d87690,
+    type: 2}
 --- !u!135 &135119718228938302
 SphereCollider:
   m_ObjectHideFlags: 1

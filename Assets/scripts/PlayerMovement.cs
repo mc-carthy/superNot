@@ -4,6 +4,10 @@ public class PlayerMovement : MonoBehaviour {
 
     [SerializeField]
     private Transform head;
+    public Transform Head
+    {
+        get { return head; }
+    }
 
     private float moveSpeed = 5f;
     private float lookSpeed = 5f;
