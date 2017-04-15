@@ -12,7 +12,7 @@ public class PlayerWeapon : MonoBehaviour {
     private void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, transform.forward, out hit))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
         {
             weapon.LookAt(hit.point);
         }
