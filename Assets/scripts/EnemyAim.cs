@@ -33,18 +33,21 @@ public class EnemyAim : MonoBehaviour {
         RaycastHit hit;
         if (Physics.Raycast(enemyHead.transform.position, playerHead.transform.position - enemyHead.transform.position, out hit))
         {
-            // Move body to face player
-            Vector3 vectorToPlayer = playerHead.transform.position - enemyHead.transform.position;
-            float angleToPlayer = Mathf.Atan2(vectorToPlayer.x, vectorToPlayer.z) * Mathf.Rad2Deg;
-            enemyBody.transform.rotation = Quaternion.Euler(0, angleToPlayer, 0);
-
-            // Move weapon to aim at head
-            weapon.LookAt(hit.point);
-
-            if (!isFiring)
+            if (hit.collider.gameObject.tag == "Player")
             {
-                isFiring = true;
-                StartCoroutine("FireRoutine");
+                // Move body to face player
+                Vector3 vectorToPlayer = playerHead.transform.position - enemyHead.transform.position;
+                float angleToPlayer = Mathf.Atan2(vectorToPlayer.x, vectorToPlayer.z) * Mathf.Rad2Deg;
+                enemyBody.transform.rotation = Quaternion.Euler(0, angleToPlayer, 0);
+
+                // Move weapon to aim at head
+                weapon.LookAt(hit.point);
+
+                if (!isFiring)
+                {
+                    isFiring = true;
+                    StartCoroutine("FireRoutine");
+                }
             }
         }
         else
