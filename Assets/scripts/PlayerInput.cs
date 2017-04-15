@@ -57,7 +57,7 @@ public class PlayerInput : MonoBehaviour {
         // Set the target time factor based on an interpolated value using the min/max timescale with the magnitude of the player input
         float timeScaleRange = TimeManager.TimeFactorDelta;
         TimeManager.TargetTimeFactor = (transInput.magnitude > 0.5f) ? TimeManager.MaxTimeScale : TimeManager.MinTimeScale;
-        TimeManager.TargetTimeFactor += mouseInput.magnitude * 3f;
+        TimeManager.TargetTimeFactor += mouseInput.magnitude;
     }
 
 }
