@@ -15,11 +15,28 @@ public class TimeManager : MonoBehaviour {
         set { targetTimeFactor = value; }
     }
 
+    public static float TimeFactorDelta
+    {
+        get
+        {
+            return maxTimeScale - minTimeScale;
+        }
+    }
+
+    private static float maxTimeScale = 1f;
+    public static float MaxTimeScale 
+    {
+        get { return maxTimeScale; }
+    }
+    
+    private static float minTimeScale = 0.05f;
+    public static float MinTimeScale 
+    {
+        get { return minTimeScale; }
+    }
+
     private float timeStep = 0.05f;
     private int timeDir;
-
-    private float maxTimeScale = 1f;
-    private float minTimeScale = 0.05f;
 
     private void Update()
     {
