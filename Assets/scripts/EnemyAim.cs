@@ -15,7 +15,7 @@ public class EnemyAim : MonoBehaviour {
     private Transform bulletSpawnPoint;
 
     private Transform playerHead;
-    private float shotDelay = 1f;
+    private float shotDelay = 3f;
     private bool isFiring;
 
     private void Awake()

@@ -12,6 +12,7 @@ public class PlayerInput : MonoBehaviour {
         pMove = GetComponent<PlayerMovement>();
         pWeapon = GetComponent<PlayerWeapon>();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()

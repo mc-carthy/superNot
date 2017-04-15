@@ -2,24 +2,26 @@
 
 public class Bullet : MonoBehaviour {
 
-    // private Rigidbody rb;
+    private ParticleSystem ps;
+    private TrailRenderer tr;
+    private Rigidbody rb;
     private float bulletSpeed = 20f;
     private float lifeTime = 5f;
+    private bool isFlying = true;
 
     private void Awake()
     {
-        // rb = GetComponent<Rigidbody>();
-    }
-
-    private void Start()
-    {
-
+        ps = GetComponent<ParticleSystem>();
+        tr = GetComponent<TrailRenderer>();
+        rb = GetComponent<Rigidbody>();
     }
 
 	private void Update()
     {
-        // rb.MovePosition(rb.position + rb.transform.forward * bulletSpeed * Time.deltaTime);
-        transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        if (isFlying)
+        {
+            transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +30,18 @@ public class Bullet : MonoBehaviour {
         {
             other.transform.parent.GetComponent<EnemyHit>().Die();
         }
+
+        FakeDestroy();
+    }
+
+    private void FakeDestroy()
+    {
+        ps.Play();
+        tr.transform.parent = null;
+        rb.useGravity = true;
+        isFlying = false;
+        Destroy(gameObject, ps.main.startLifetime.constantMax);
+
     }
 
 }
