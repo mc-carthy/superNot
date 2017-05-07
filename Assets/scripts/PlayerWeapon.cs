@@ -21,6 +21,7 @@ public class PlayerWeapon : MonoBehaviour {
     public void Fire ()
     {
         GameObject newBullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        newBullet.tag = "playerBullet";
     }
 
 }
