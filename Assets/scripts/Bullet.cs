@@ -26,9 +26,12 @@ public class Bullet : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "playerBullet" || other.gameObject.tag == "Player")
+        if (gameObject.tag == "playerBullet")
         {
-            return;
+            if (other.gameObject.tag == "playerBullet" || other.gameObject.tag == "Player")
+            {
+                return;
+            }
         }
         
         if (other.gameObject.tag == "enemy")
@@ -43,6 +46,7 @@ public class Bullet : MonoBehaviour {
     {
         ps.Play();
         tr.transform.parent = null;
+        ps.transform.parent = null;
         rb.useGravity = true;
         isFlying = false;
         Destroy(gameObject);
