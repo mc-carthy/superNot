@@ -11,8 +11,8 @@ public class Bullet : MonoBehaviour {
 
     private void Awake()
     {
-        ps = GetComponent<ParticleSystem>();
-        tr = GetComponent<TrailRenderer>();
+        ps = GetComponentInChildren<ParticleSystem>();
+        tr = GetComponentInChildren<TrailRenderer>();
         rb = GetComponent<Rigidbody>();
     }
 
