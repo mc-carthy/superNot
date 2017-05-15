@@ -12,7 +12,7 @@ public class EnemyPathfinding : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-	private void Start()
+	private void Update()
     {
         agent.destination = player.position;
     }
