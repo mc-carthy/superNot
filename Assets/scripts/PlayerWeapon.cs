@@ -9,10 +9,16 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField]
     private Transform weapon;
 
+    private int layerMask = 1 << 10;
+
+    private void Start() {
+        layerMask = ~layerMask;
+    }
+
     private void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, layerMask))
         {
             weapon.LookAt(hit.point);
         }

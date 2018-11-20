@@ -17,7 +17,7 @@ public class Sword : MonoBehaviour {
 	}
 	
 	private void Update() {
-		if (Input.GetKeyDown(KeyCode.Space) && Time.time > timeToNextSwing)
+		if (Input.GetMouseButtonDown(1) && Time.time > timeToNextSwing)
 		{
 			timeToNextSwing = Time.time + swingRate;
 			anim.Play("swing");
